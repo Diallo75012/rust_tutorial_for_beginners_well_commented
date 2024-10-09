@@ -14,15 +14,15 @@ use crate::enum_types::MangaKissaIssue;
 
 fn main() {
   println!("{:?}", enum_types::issues_at_shibuya_action(
-    MangaKissaIssue::OneIssue("Naruto without any sound!".to_string())
+    &MangaKissaIssue::OneIssue("Naruto without any sound!".to_string())
     )
   );
   println!("{:?}", enum_types::issues_at_shibuya_action(
-    MangaKissaIssue::ListOfNumbers([109, 75012, 007].to_vec())
+    &MangaKissaIssue::ListOfNumbers([109, 75012, 007].to_vec())
     ) 
   );
   println!("{:?}", enum_types::issues_at_shibuya_action(
-    MangaKissaIssue::IssueRanking(109)
+    &MangaKissaIssue::IssueRanking(109)
     )
   );
 

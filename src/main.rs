@@ -7,25 +7,17 @@ mod ev_num;
 
 mod fibo;
 mod struct_and_methods;
-*/
-
 mod enum_types;
 use crate::enum_types::MangaKissaIssue;
+*/
+
+mod display_example;
 
 fn main() {
-  println!("{:?}", enum_types::issues_at_shibuya_action(
-    &MangaKissaIssue::OneIssue("Naruto without any sound!".to_string())
-    )
+  println!(
+    "{:?}",
+    display_example::display_is_implemented_to_rectangle()
   );
-  println!("{:?}", enum_types::issues_at_shibuya_action(
-    &MangaKissaIssue::ListOfNumbers([109, 75012, 007].to_vec())
-    ) 
-  );
-  println!("{:?}", enum_types::issues_at_shibuya_action(
-    &MangaKissaIssue::IssueRanking(109)
-    )
-  );
-
 }
 
   /*
@@ -39,5 +31,18 @@ fn main() {
   // use `:?` when print is not implemented and can;t be formatted
   println!("{:?}", fibo::range_fibo(15));
   println!("{:?}", struct_and_methods::reserve_manga_kissa());
+  // use of enum variants
+  println!("{:?}", enum_types::issues_at_shibuya_action(
+    &MangaKissaIssue::OneIssue("Naruto without any sound!".to_string())
+    )
+  );
+  println!("{:?}", enum_types::issues_at_shibuya_action(
+    &MangaKissaIssue::ListOfNumbers([109, 75012, 007].to_vec())
+    )
+  );
+  println!("{:?}", enum_types::issues_at_shibuya_action(
+    &MangaKissaIssue::IssueRanking(109)
+    )
+  );
 
   */

@@ -15,7 +15,7 @@ mod display_example;
 
 fn main() {
   println!(
-    "{:?}",
+    "{}",
     display_example::display_is_implemented_to_rectangle()
   );
 }

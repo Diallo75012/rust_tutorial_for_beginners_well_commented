@@ -1,37 +1,47 @@
+// import the formatting library `fmt`
 use std::fmt;
 
+// let's use `Rectangle` example 
 #[derive(Debug)]
 pub struct Rectangle {
   pub width: u64,
   pub height: u64,
 }
 
+// now we are going to implement the `Display` trait to the custom struct
 impl fmt::Display for Rectangle {
-  // this is using a reference so borrowing
+  // here `Formatter` is like a buffer to store the custom formatting
+  // and returns to `stdout`
+  // `Result` return `Ok()` or `Err()`
   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
     write!(f, "{} x {}", self.width, self.height)
-    // Can use debut as a fallback
-    // write!(f, "{:?} x {:?}", self.width, self.height)
   }
 }
 
-fn return_a_randon_string() -> String {
-    return "Volume at 000.000000000001, can't hear!".to_string();
+fn return_a_string() -> String {
+  return "Volume at 0.0000000000001, can't hear anything!".to_string();
 }
 
-pub fn display_is_implemented_to_rectangle() -> Rectangle {
+// let's make our exportable `pub` function
+pub fn display_is_implemented_to_rectangle() -> String {
+  // we instantiate a `Rectangle`
   let rect = Rectangle {
-    width: 30,
-    height: 60
+    width: 89,
+    height: 78,
   };
-  println!("Print using Implementation: {}", rect);
-  // the Debug `{:?}` is borrowing and not moving ownership
-  //println!("Print using Debug already in print macro implemting its own Display: {:?}", rect);
-  // that is why we cans till access `rect` variable instantiating the struct `Rectangle`: here we access the fields
-  //println!("We still have access to `rect` instance of Rectangle struct: '{:?} x {:?}'. do you know why?", rect.height, rect.width);
 
-  //  we can return another function output as well
-  println!("{}", return_a_randon_string());
-  // Returning the Rectangle object instantiated
-  rect
+  println!("Print using Implementation: {}", rect.width);
+  // let's now compare to how it would look like with `Debug`
+  // but we will need to put the decorator `#[derive(Debug)]` to `Rectangle` struct
+  println!("Print using `Debug` trait: {:?}", rect);
+  return_a_string()
+  //"Success in implementing custom `Display` to custom struct!".to_string()
 }
+
+
+
+
+
+
+
+

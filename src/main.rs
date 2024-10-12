@@ -9,15 +9,17 @@ mod fibo;
 mod struct_and_methods;
 mod enum_types;
 use crate::enum_types::MangaKissaIssue;
+mod display_example;
 */
 
-mod display_example;
+mod error_handling;
+
 
 fn main() {
   println!(
-    "{}",
-    display_example::display_is_implemented_to_rectangle()
-  );
+    "{:?}",
+    error_handling::so_many_errors()
+  )
 }
 
   /*
@@ -44,5 +46,12 @@ fn main() {
     &MangaKissaIssue::IssueRanking(109)
     )
   );
+  // Display implementation
+  println!(
+    // no `Debug` trait used (which is alrady implemented in t>
+    "{}",
+    display_example::display_is_implemented_to_rectangle()
+  )
+
 
   */

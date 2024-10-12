@@ -14,11 +14,12 @@ mod display_example;
 
 mod error_handling;
 
-
 fn main() {
   println!(
+     // `std::io:Error` implements `Debug` but not `Display`
+     // therefore we need `{:?}`
     "{:?}",
-    error_handling::so_many_errors()
+     error_handling::so_many_errors()
   )
 }
 

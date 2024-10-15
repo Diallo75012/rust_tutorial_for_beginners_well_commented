@@ -11,16 +11,16 @@ mod enum_types;
 use crate::enum_types::MangaKissaIssue;
 mod display_example;
 mod error_handling;
-*/
-
 mod options;
 use options::Rectangle;
+*/
+
+mod strings;
 
 fn main() {
-  let rect = Rectangle {width: 5, height: 25};
-  let validated = options::validate_rectangle(rect);
-  println!("{:?}", validated)
+  println!("{:?}", strings::string_or_str())
 }
+
 
   /*
 

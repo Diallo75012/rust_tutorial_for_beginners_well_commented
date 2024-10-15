@@ -10,17 +10,16 @@ mod struct_and_methods;
 mod enum_types;
 use crate::enum_types::MangaKissaIssue;
 mod display_example;
+mod error_handling;
 */
 
-mod error_handling;
+mod options;
+use options::Rectangle;
 
 fn main() {
-  println!(
-     // `std::io:Error` implements `Debug` but not `Display`
-     // therefore we need `{:?}`
-    "{:?}",
-     error_handling::so_many_errors()
-  )
+  let rect = Rectangle {width: 5, height: 25};
+  let validated = options::validate_rectangle(rect);
+  println!("{:?}", validated)
 }
 
   /*

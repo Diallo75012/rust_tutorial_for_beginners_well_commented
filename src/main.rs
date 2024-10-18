@@ -14,12 +14,13 @@ mod error_handling;
 mod options;
 use options::Rectangle;
 mod strings;
+mod heap_the_stack;
 */
 
-mod heap_the_stack;
+mod loops;
 
 fn main() {
-  println!("{:?}", heap_the_stack::move_your_heap())
+  println!("{:?}", loops::loop_ways())
 }
 
 

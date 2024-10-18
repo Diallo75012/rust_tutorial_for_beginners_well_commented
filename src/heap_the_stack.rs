@@ -1,9 +1,9 @@
 // let create a fixed-size integer
-// cargo add num-bigint/num-traits
 use num_bigint::BigUint;
 use num_traits::One;
 
-pub fn move_your_heap() -> u128 {
+
+pub fn move_your_heap() -> BigUint {
   /*
   // example 1
   // u/i:8/16/64... are 'Stack' allocated 
@@ -50,47 +50,66 @@ pub fn move_your_heap() -> u128 {
   );
   */
 
-
-  // example2: StackOverFlow the website! no?
-  // this tutorial have been copied from Stackoverflow
-  // ok lets create one actually
-  // lets see after how to prevent it to happen
-  // we using here recursion and will use a `nbr` large enough
-  // i create a variable above so that you can see that we can do that in Rust
-  // for `u64` 20 OK, 21 Stackoverflow, for `u128` 34 OK, 35 Stackoverflow
-  let shibuya_crossing_crowd = big_number_exploding_linux_stack(34);
+  // example 2: StackOverFlow the website? 
+  // this tutorial have benn copied from Stackoverflow.com ;)
+  // Ok let's create one actually
+  // let's see after how to prevent it to happen
+  // we are going to use recursion and use a `nbr` to quickly get big values
+  // so here for `nbr=20` we got: `2432902008176640000`
+  // very long number but if we exceed the capacity of the stack `u64` allocated type...
+  // we try a much larger `nbr`
+  // but same here there is a limit
+  let shibuya_crossing_crowd = big_number_exploding_linux_stack(1_000);
 
   //#[allow(unconditional_recursion)]
+  // so with that no need anymore to use a decorator to allow recursion
+  // but let's use the loop way to not Stackoverflow
+  // as advised by the our firend compiler ;)
   /*
   fn big_number_exploding_linux_stack(nbr: u64) -> u64 {
-    if nbr == 1 {
+    if nbr == 1{
       1
     } else {
-        nbr * big_number_exploding_linux_stack(nbr - 1)
+        nbr * big_number_exploding_linux_stack(nbr -1)
     }
-  }
+  } 
   */
-  // now how to not `Stack Over Flow!` ? 
-  // we need to use a `loop` as stated/suggested by the compiler
+
+  // here the loop way
+  // we keep this function but does it mean that we are OK?
+  // we will increase the number....
+  // now things become interesting as we could just say
+  // OK then I am going just to increase that `u` type..
+  // but in std Rust there is a limit `u128`
+  // so let's go step by step to understand that and use `u128`
+  /*
   fn big_number_exploding_linux_stack(nbr: u128) -> u128 {
     let mut total = 1;
     for n in 1..=nbr {
       total *= n;
     }
     total
-  } 
+  }
+  */
 
-  // for loop example with Crates num_bigint and num_traits (cargo add)
-  // make sure to chang the function returned type to `BigUint`
-  /*
-  fn crowd_count(nbr: u64) -> BigUint {
-    let mut total = BigUint::one(); 
+  // therefore this is a solution but you have seen the limits of it
+  // we will need to import packages `Crates` that will permit us to do that and not explode the stack
+  // probably those packages are using stuff like `Box<T>` in order to have those variables on the `Heap`
+
+  fn big_number_exploding_linux_stack(nbr: u64) -> BigUint {
+    let mut total = BigUint::one();
     for n in 1..=nbr {
       total *= n;
     }
     total
   }
-  */
 
   shibuya_crossing_crowd
 }
+
+
+
+
+
+
+

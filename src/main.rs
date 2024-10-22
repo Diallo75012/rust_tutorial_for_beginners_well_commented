@@ -16,63 +16,52 @@ use options::Rectangle;
 mod strings;
 mod heap_the_stack;
 mod loops;
-*/
-
-use std::any::Any;
 mod boxes;
+//#[allow(unused_imports)]
 use crate::boxes::MangaKissaZone;
+use std::any::Any;
+*/
+mod generic_anime;
 
 fn main() {
-
-  // example 1: print enum
-  let vec_box_from_enum = vec![
-    MangaKissaZone::Attendance(3090),
-    MangaKissaZone::Comment("Sooo Many People!".to_string()),
-    MangaKissaZone::Temperature(31.9),
-  ];
-  println!("#########################################");
-  boxes::print_manga_kissa_zone_debug_mode(vec_box_from_enum);
-  println!("#########################################\n");
-
-  // example 2: downcasting values from `Box`
-  // here when creating the `Vec`
-  // because we have to put elements in this Array `[elem1, elem2, ...]`
-  // Rust wants all `elem` to be the same type like `[T;N]` for `Array` as we have seen in previous video
-  // therefore, we will use then `as Box<dyn Any>`
-  // Because elements have different types (String, i32, f64),
-  // we must explicitly tell Rust that they are all boxed as Box<dyn Any>
-  // We are `coercing` each boxed value. (inverse of `infer` types)
-  // if we don't `tell the type = convert it here using `as Box<dyn Any>` we will get an error 
-  let vec_box1: Vec<Box<dyn Any>> = Vec::from([
-    Box::new("Castella Japan".to_string()) as Box<dyn Any>,
-    Box::new(3_089_345) as Box<dyn Any>,
-    Box::new(32.9) as Box<dyn Any>,
-  ]);
-  // Here we pass in `&mut Vec<Box<dyn Any>>`. As the type is know in the function
-  // and the `Vec` exists so it is already initalized, inside the function
-  // no need to convert the values pushed inside the vector: no need `as Box<dyn Any>`
-  // from here rust will `infer` the types or automatically `coerce` those types to `Box<dyn Any>`
-  boxes::box_simple_downcasting(vec_box1);
-  
-  // example 3: Downcasting and mutating using reference `&mut` to make it more fun
-  println!("{:?}", boxes::box_downcasting_in_yoyogi(
-      &mut Vec::from(
-        [
-         Box::new("I am in Starbuck Shibuya Watching At People Crossing And Their Different Styles.".to_string()) as Box<dyn Any>,
-         Box::new(109) as Box<dyn Any>,
-         Box::new(2007) as Box<dyn Any>, 
-         Box::new(20.4) as Box<dyn Any>,
-        ]
+  /*
+  let bug_ticket = Ticket {
+    id: 1,
+    title: String::from("App crashes on login"),
+    ticket_type: TicketType::Issue(
+      String::from(
+        "Critical bug affecting login"
       )
-  ));
+    ),
+  };
 
-  // example 4: using an `enum` as `Box` Type
-  let shibuya_manga_kissa_level_7: Box<dyn Any> = Box::new(
-    MangaKissaZone::Comment("A normal day reading books and whatching Naruto!".to_string()),
-  ) as Box<dyn Any>;
-  boxes::custom_enum_box_check(shibuya_manga_kissa_level_7);
+  let feature_ticket = Ticket {
+    id: 2,
+    title: String::from("Add dark mode"),
+    ticket_type: TicketType::FeatureRequest(
+      String::from( 
+        "User requested a dark theme"
+      )
+    ),
+  };
 
-}
+  let improvement_ticket = Ticket { 
+    id: 3,
+    title: String::from("Improve load time"),
+    ticket_type: TicketType::Improvement {
+      details: String::from(
+        "Optimize image loading"
+      ),
+      priority: 2,
+    },
+  };
+
+  println!("Bug ticket: {:?}", bug_ticket);
+  println!("Feature ticket: {:?}", feature_ticket);
+  println!("Improvement ticket: {:?}", improvement_ticket)
+  */
+  generic_anime::manage_any_ticket_type()
+}	
 
 
   /*
@@ -105,6 +94,86 @@ fn main() {
     "{}",
     display_example::display_is_implemented_to_rectangle()
   )
+  // Box
+  // example 1: print enum
+  let vec_box_from_enum = vec![
+    // i put those in different order just for you
+    // to know that the order doesn't matter
+    MangaKissaZone::Attendance(3090),
+    MangaKissaZone::Comment("Sooo Many People".to_string()),
+    MangaKissaZone::Temperature(31.9),
+  ];
+  println!("################################");
+  boxes::print_manga_kissa_zone_debug_mode(
+    vec_box_from_enum
+  );
+  println!("################################");
 
+  // example 2: downcasting values from Real `Box`
+  // we create a `Vec` and use `[elem, elem2, ...]`
+  // which is making a `Vector` from an `Array`
+  // Rust wants all `elem` to be same type like in `[T;N]` for `Array` as we have seen in previous video
+  // therefore, we will use then `as Box<dyn Any>`
+  // because elements have differet types (String, f64, i32)
+  // we must explicitly tell Rust that they are all boxes as `Box<dyn Any>` (therefore, same type in the `Array` to transform to a `Vec`)
+  // we are "coercing" each boxed value type. (inverse of `infer` types)
+  // if we don't tell the type = convert it here using `Box<dyn Any>`, we will get an error at compile time
+  let vec_box_castella: Vec<Box<dyn Any>> = Vec::from([
+    Box::new("Castella Japan".to_string()) as Box<dyn Any>,
+    Box::new(3_089_345) as Box<dyn Any>,
+    Box::new(32.9) as Box<dyn Any>,
+  ]);
+
+  boxes::box_simple_downcasting(vec_box_castella);
+
+  // example 3: downcasting and mutating using `&mut` to make it more fun
+  // here we pass in `&mut Vec<Box<dyn Any>>`
+  // as the type is know in the function
+  // and the `Vec` exists so it is already initialized
+  // inside the function no need to convert the values
+  // when pushing those inside the vector
+  // no need `as Box<dyn Any>`
+  // from inside the function Rust will "infer"
+  // therefore automatically "coerce" thos etypes to `Box<dyn Any>`
+  println!(
+     "{:?}",
+      boxes::box_downcasting_in_yoyogi(
+        &mut Vec::from([
+          Box::new(
+            1
+          ) as Box<dyn Any>,
+          Box::new(
+            "I am in Starbucks Shibuya Watching at People Crossing and Their Different Styles Entertains Me."
+            .to_string()
+          ) as Box<dyn Any>,
+          Box::new(
+            109
+          // so here we coearce the type manually
+          // and there Rust will 'infer' automatically
+          ) as Box<dyn Any>,
+          Box::new(
+            2007
+          ) as Box<dyn Any>,
+          Box::new(
+            20.4
+          ) as Box<dyn Any>,
+       ])
+      )
+  )
+ 
+
+  // example 4: using an `enum` as `Box` type
+  // the `Enum` will live in the Heap
+  // and the String Type will be moved there
+  // if you need to have less stuff in the Stack
+  // or think that it is going to grow and "overflow"
+  // You can use `Box` for that, with `Enum` it becomes powerful
+  let shibuya_manga_kissa_level_7: Box<dyn Any> = Box::new(
+    MangaKissaZone::Comment(
+      "A normal day reading books while wathcing Naruto without sound!".to_string(),
+    )
+  ) as Box<dyn Any>;
+  
+  boxes::custom_enum_box_check(shibuya_manga_kissa_level_7)
 
   */

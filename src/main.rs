@@ -20,47 +20,14 @@ mod boxes;
 //#[allow(unused_imports)]
 use crate::boxes::MangaKissaZone;
 use std::any::Any;
+mod generic_manga_kissa;
 */
-mod generic_anime;
+
+mod trait_shibuya_109;
 
 fn main() {
-  /*
-  let bug_ticket = Ticket {
-    id: 1,
-    title: String::from("App crashes on login"),
-    ticket_type: TicketType::Issue(
-      String::from(
-        "Critical bug affecting login"
-      )
-    ),
-  };
-
-  let feature_ticket = Ticket {
-    id: 2,
-    title: String::from("Add dark mode"),
-    ticket_type: TicketType::FeatureRequest(
-      String::from( 
-        "User requested a dark theme"
-      )
-    ),
-  };
-
-  let improvement_ticket = Ticket { 
-    id: 3,
-    title: String::from("Improve load time"),
-    ticket_type: TicketType::Improvement {
-      details: String::from(
-        "Optimize image loading"
-      ),
-      priority: 2,
-    },
-  };
-
-  println!("Bug ticket: {:?}", bug_ticket);
-  println!("Feature ticket: {:?}", feature_ticket);
-  println!("Improvement ticket: {:?}", improvement_ticket)
-  */
-  generic_anime::manage_any_ticket_type()
+  // we just call the function
+  trait_shibuya_109::trait_required_for_109_shibuya_tower()
 }	
 
 

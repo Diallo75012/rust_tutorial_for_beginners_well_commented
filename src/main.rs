@@ -21,12 +21,12 @@ mod boxes;
 use crate::boxes::MangaKissaZone;
 use std::any::Any;
 mod generic_manga_kissa;
+mod trait_shibuya_109;
 */
 
 mod trait_shibuya_109;
 
 fn main() {
-  // we just call the function
   trait_shibuya_109::trait_required_for_109_shibuya_tower()
 }	
 

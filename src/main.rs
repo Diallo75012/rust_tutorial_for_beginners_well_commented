@@ -22,12 +22,19 @@ use crate::boxes::MangaKissaZone;
 use std::any::Any;
 mod generic_manga_kissa;
 mod trait_shibuya_109;
+mod trait_shibuya_109;
 */
 
-mod trait_shibuya_109;
+mod mistralai;
+use mistralai::mistral;
+
 
 fn main() {
-  trait_shibuya_109::trait_required_for_109_shibuya_tower()
+  println!("******************************");
+  mistral::call_mistral_llm();
+  println!("******************************");
+  mistral::get_list_mistral_models();
+  println!("******************************")
 }	
 
 

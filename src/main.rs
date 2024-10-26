@@ -23,18 +23,15 @@ use std::any::Any;
 mod generic_manga_kissa;
 mod trait_shibuya_109;
 mod trait_shibuya_109;
-*/
-
 mod mistralai;
 use mistralai::mistral;
+*/
 
+mod hidden_vars; // folder
+use hidden_vars::read_hidden_vars; // module in folder
 
 fn main() {
-  println!("******************************");
-  mistral::call_mistral_llm();
-  println!("******************************");
-  mistral::get_list_mistral_models();
-  println!("******************************")
+  read_hidden_vars::reading_env_vars();
 }	
 
 

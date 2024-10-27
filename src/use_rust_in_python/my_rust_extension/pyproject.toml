@@ -1,0 +1,28 @@
+[build-system]
+requires = ["maturin>=1.7,<2.0"]
+build-backend = "maturin"
+
+[project]
+# i have updated and added
+name = "my_rust_extension"
+# i have updated and added
+description = "A Rust mod implemented in Python"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+# this gets the version dynamically from environment at build time
+# otherwise comment it out and add: `version: "<Your_version_number_0.x.x>"`
+dynamic = ["version"]
+# i have updated and added
+authors = [{ name = "Creditizens", email =  "creditizensAI@metaverse.com"}]
+
+[tool.maturin]
+# i have updated and added
+bindings = "pyo3"
+# this should be the one done in Cargo.toml
+# we leave it like that but if it doesn't work
+# we know that this conf. is in Cargo.toml so we comment this out...we will see
+features = ["pyo3/extension-module"]

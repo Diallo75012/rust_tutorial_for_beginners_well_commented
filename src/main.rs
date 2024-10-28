@@ -25,13 +25,16 @@ mod trait_shibuya_109;
 mod trait_shibuya_109;
 mod mistralai;
 use mistralai::mistral;
-*/
-
 mod hidden_vars; // folder
 use hidden_vars::read_hidden_vars; // module in folder
+*/
+
+mod junko_lifetimes;
 
 fn main() {
-  read_hidden_vars::reading_env_vars();
+  //junko_lifetimes::lifetimes_different_scope()
+  //junko_lifetimes::multiple_lifetimes_to_struct()
+  junko_lifetimes::multiple_lifetimes_to_struct_scope_limited()
 }	
 
 

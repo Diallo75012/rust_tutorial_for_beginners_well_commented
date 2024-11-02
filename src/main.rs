@@ -27,14 +27,34 @@ mod mistralai;
 use mistralai::mistral;
 mod hidden_vars; // folder
 use hidden_vars::read_hidden_vars; // module in folder
+mod junko_lifetimes;
 */
 
-mod junko_lifetimes;
+mod thread_channel;
 
 fn main() {
-  //junko_lifetimes::lifetimes_different_scope()
-  //junko_lifetimes::multiple_lifetimes_to_struct()
-  junko_lifetimes::multiple_lifetimes_to_struct_scope_limited()
+  /*
+  //thread_channel::multithreading_mangakissa_parallel();
+  thread_channel::multithreading_managakissa_waiting_thread_to_finish_first();
+  thread_channel::multithreading_managakissa_waiting_thread_to_finish_first();
+  thread_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
+    vec![
+      34, 76, 2, 4, 9, 11,56, 69
+    ]
+  );
+  thread_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
+    Vec::from(
+      [109, 75012, 2007, 0, 10000]
+    )
+  );
+  let first_name = "Junko";
+  thread_channel::thread_message_passing(&first_name);
+  */
+  thread_channel::multithread_parallel_produce_and_receive_once_to_calculate_result(
+    &vec![
+      1, 2, 109, 2007, 3847
+    ]
+  );
 }	
 
 
@@ -149,5 +169,8 @@ fn main() {
   ) as Box<dyn Any>;
   
   boxes::custom_enum_box_check(shibuya_manga_kissa_level_7)
+  //junko_lifetimes::lifetimes_different_scope()
+  //junko_lifetimes::multiple_lifetimes_to_struct()
+  junko_lifetimes::multiple_lifetimes_to_struct_scope_limited()
 
   */

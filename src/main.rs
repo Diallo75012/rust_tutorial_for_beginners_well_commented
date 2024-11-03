@@ -30,31 +30,24 @@ use hidden_vars::read_hidden_vars; // module in folder
 mod junko_lifetimes;
 */
 
-mod thread_channel;
+mod threading_channel;
 
 fn main() {
-  /*
-  //thread_channel::multithreading_mangakissa_parallel();
-  thread_channel::multithreading_managakissa_waiting_thread_to_finish_first();
-  thread_channel::multithreading_managakissa_waiting_thread_to_finish_first();
-  thread_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
-    vec![
-      34, 76, 2, 4, 9, 11,56, 69
-    ]
-  );
-  thread_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
-    Vec::from(
-      [109, 75012, 2007, 0, 10000]
+  //threading_channel::multithreading_mangakissa_parallel();
+  //threading_channel::multithreading_mangakissa_waiting_thread_to_finish_first();
+  //threading_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
+  //  vec![109, 2007, 75012, 0, 100]
+  //);
+  // `&str` =  string literal = "Junko"
+  //let random_name = "Junko";
+  //threading_channel::thread_message_passing(random_name)
+  threading_channel::multithread_parallel_produce_and_receive_once_to_calculate_result(
+    &Vec::from(
+      // will create x7 tranmitters
+      [2005, 2007, 2009, 2014, 2024, 109, 75012]
     )
   );
-  let first_name = "Junko";
-  thread_channel::thread_message_passing(&first_name);
-  */
-  thread_channel::multithread_parallel_produce_and_receive_once_to_calculate_result(
-    &vec![
-      1, 2, 109, 2007, 3847
-    ]
-  );
+
 }	
 
 

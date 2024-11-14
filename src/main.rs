@@ -28,26 +28,15 @@ use mistralai::mistral;
 mod hidden_vars; // folder
 use hidden_vars::read_hidden_vars; // module in folder
 mod junko_lifetimes;
+mod threading_channel;
 */
 
-mod threading_channel;
+mod casting;
 
 fn main() {
-  //threading_channel::multithreading_mangakissa_parallel();
-  //threading_channel::multithreading_mangakissa_waiting_thread_to_finish_first();
-  //threading_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
-  //  vec![109, 2007, 75012, 0, 100]
-  //);
-  // `&str` =  string literal = "Junko"
-  //let random_name = "Junko";
-  //threading_channel::thread_message_passing(random_name)
-  threading_channel::multithread_parallel_produce_and_receive_once_to_calculate_result(
-    &Vec::from(
-      // will create x7 tranmitters
-      [2005, 2007, 2009, 2014, 2024, 109, 75012]
-    )
-  );
-
+  casting::normal_casting();
+  casting::generics_in_structs();
+  casting::manga_kissa_services();
 }	
 
 
@@ -165,5 +154,20 @@ fn main() {
   //junko_lifetimes::lifetimes_different_scope()
   //junko_lifetimes::multiple_lifetimes_to_struct()
   junko_lifetimes::multiple_lifetimes_to_struct_scope_limited()
+
+  //threading_channel::multithreading_mangakissa_parallel();
+  //threading_channel::multithreading_mangakissa_waiting_thread_to_finish_first();
+  //threading_channel::multithreading_mangakissa_moving_ownership_if_using_variable(
+  //  vec![109, 2007, 75012, 0, 100]
+  //);
+  // `&str` =  string literal = "Junko"
+  //let random_name = "Junko";
+  //threading_channel::thread_message_passing(random_name)
+  //threading_channel::multithread_parallel_produce_and_receive_once_to_calculate_result(
+   // &Vec::from(
+      // will create x7 tranmitters
+      //[2005, 2007, 2009, 2014, 2024, 109, 75012]
+    //)
+  //);
 
   */

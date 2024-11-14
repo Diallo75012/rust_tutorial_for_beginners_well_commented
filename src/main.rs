@@ -31,12 +31,12 @@ mod junko_lifetimes;
 mod threading_channel;
 */
 
-mod casting;
+mod casting_mangakissa_services;
 
 fn main() {
-  casting::normal_casting();
-  casting::generics_in_structs();
-  casting::manga_kissa_services();
+  // casting_mangakissa_services::normal_casting();
+  // casting_mangakissa_services::generics_in_structs();
+  casting_mangakissa_services::manga_kissa_services()
 }	
 
 
